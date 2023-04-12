@@ -1,6 +1,5 @@
 import icon from "../../img/icon.png"
 import logout from "../../img/logout.png"
-import "./Logout.css"
 function Logout(){
     return(
         <>
