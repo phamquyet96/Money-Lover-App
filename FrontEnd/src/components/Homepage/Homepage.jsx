@@ -40,7 +40,7 @@ function Homepage(){
                             </div>
                         </div>
                     </div>
-                    <div className="container py-9">
+                    <div className="container py-9 mx-auto">
                         <div className="flex px-48 justify-between">
                             <div className="flex-col py-6 p-4 rounded-lg text-center">
                                 <img src={lock} alt='' className="ml-auto mr-auto "></img>
