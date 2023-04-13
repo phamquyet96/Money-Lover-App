@@ -35,8 +35,8 @@ function Homepage(){
                         </p>
                         <div className='flex'>
                             <div className="flex gap-x-4 my-9 ml-auto mr-auto">
-                                <button className=" text-green-500 rounded-lg border border-green-500 text-16 mb-4 w-[194px] h-[48px]">Sign Up</button>
-                                <button className="text-white rounded-lg text-16 bg-green-500 mb-4 w-[194px] h-[48px]">Sign In</button>
+                                <a href='/login' ><button className=" text-green-500 rounded-lg border border-green-500 text-16 mb-4 w-[194px] h-[48px]">Sign Up</button></a>
+                                <a href='/login' ><button className="text-white rounded-lg text-16 bg-green-500 mb-4 w-[194px] h-[48px]">Sign In</button></a>
                             </div>
                         </div>
                     </div>
