@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import {Route, Routes} from "react-router-dom";
+import Homepage from "./components/Homepage/Homepage";
+import Logout from "./components/Logout/Logout";
+<<<<<<< HEAD
+import Login from "./components/Login-Register/Login";
+import Register from "./components/Login-Register/Register";
+=======
+import Login from "./components/Login/Login";
+import Forgot from "./components/Forgot_pass/Forgot";
+>>>>>>> fcd3f79 (forgot passworld)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+        <Route path="/" element={<Homepage/>}></Route>
+        <Route path="/logout" element={<Logout/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+<<<<<<< HEAD
+        <Route path="/register" element={<Register/>}></Route>
+=======
+        <Route path="/forgot" element={<Forgot/>}></Route>
+>>>>>>> fcd3f79 (forgot passworld)
+      </Routes>
   );
 }
 
 export default App;
+
