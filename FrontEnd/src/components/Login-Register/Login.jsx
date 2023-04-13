@@ -59,7 +59,7 @@ const Login = () => {
                                             <input type="password" name="password" id="password" placeholder="Password" autoComplete='current-password'
                                                    className="w-full font-roboto bg-gray-100 py-2 px-4 rounded-[10px] focus:outline-none focus:ring focus:ring-green-600 "/>
                                         </div>
-                                        <a href='/#'><p className='text-right text-green-600'>Forgot password</p></a>
+                                        <a href='/forgot'><p className='text-right text-green-600'>Forgot password</p></a>
                                         <div>
                                             <button type="submit"
                                                     className="w-full bg-green-500 text-white font-roboto py-2 rounded-md hover:bg-green-700 transition-colors duration-300 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">LOGIN
