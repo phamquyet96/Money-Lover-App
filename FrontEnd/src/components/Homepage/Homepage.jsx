@@ -11,15 +11,15 @@ function Homepage(){
                 <div className="fixed top-0 inset-x-0 z-50 h-20 border-none bg-transparent">
                     <div className="z-40 w-full">
                         <nav className="flex items-center justify-between h-20 container px-48">
-                            <img src={logo} className="w-48 mx-50"></img>
+                            <img src={logo} className="w-48 mx-50" alt=''></img>
                             <nav className="flex justify-center space-x-3">
                                 <a href="/about"
                                    className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">About Us</a>
                                 <a href="/career"
                                    className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Career</a>
                                 <div className="flex justify-between">
-                                    <img src={flag} className="w-6 h-6 my-2"></img>
-                                    <a href=""
+                                    <img src={flag} alt='' className="w-6 h-6 my-2"></img>
+                                    <a href="/#"
                                        className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Vietnamese</a>
                                 </div>
                             </nav>
@@ -43,19 +43,19 @@ function Homepage(){
                     <div className="container py-9">
                         <div className="flex px-48 justify-between">
                             <div className="flex-col py-6 p-4 rounded-lg text-center">
-                                <img src={lock} className="ml-auto mr-auto "></img>
+                                <img src={lock} alt='' className="ml-auto mr-auto "></img>
                                 <p className="font-bold text-dark-tiny leading-48 text-center text-2xl"> 100% Secured data</p>
                             </div>
                             <div className="flex-col py-6 p-4 w=[280px] gap-x-6 rounded-lg items-center">
-                                <img src={lock1} className="ml-auto mr-auto "></img>
+                                <img src={lock1} alt='' className="ml-auto mr-auto "></img>
                                 <p className="font-bold text-dark-tiny leading-48 text-center text-2xl"> 1 Million+ users </p>
                             </div>
                             <div className="flex-col py-6 p-4 w=[280px] gap-x-6 rounded-lg items-center">
-                                <img src={lock2} className="ml-auto mr-auto "></img>
+                                <img src={lock2} alt='' className="ml-auto mr-auto "></img>
                                 <p className="font-bold text-dark-tiny leading-48 text-center text-2xl"> 100K+ 5-star Reviews</p>
                             </div>
                             <div className="flex-col py-6 p-4 w=[280px] gap-x-6 rounded-lg items-center">
-                                <img src={lock3} className="ml-auto mr-auto "></img>
+                                <img src={lock3} alt='' className="ml-auto mr-auto "></img>
                                 <p className="font-bold text-dark-tiny text-center text-2xl"> App of the day</p>
                             </div>
                         </div>
