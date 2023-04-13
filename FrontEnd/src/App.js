@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage/>}></Route>
         <Route path="/logout" element={<Logout/>}></Route>
-        <Route path="/auth/login" element={<Login/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
       </Routes>
   );
 }
