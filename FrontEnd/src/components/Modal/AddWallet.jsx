@@ -13,7 +13,7 @@ const AddWalletModal = () => {
             <div id="defaultModal" tabIndex="-1" aria-hidden="true"
                  className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div className="relative shadow-2xl bottom-60 w-fit max-w-2xl h-fit">
-                    <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div className=" bg-white rounded-lg shadow dark:bg-gray-700">
                         <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                                 Add a wallet first!
@@ -30,18 +30,25 @@ const AddWalletModal = () => {
                                 <span className="sr-only">Close modal</span>
                             </button>
                         </div>
-                        <div className="p-5 space-y-3 relative content-center">
+                        <div className="p-5 relative flex content-center mx-auto">
                             <div className="border-2 w-[103px] h-[64px] rounded-lg">
 
                             </div>
-                            <div className='border-2 w-[328px] h-[64px] rounded-lg mt-1 '>
+                            <div className='border-2 w-[328px] h-[64px] rounded-lg ml-8'>
+                                <input type="email" name="email" id="email"
+                                       className=" border border-gray-300 text-black text-sm rounded-lg h-full w-full p-2.5 "
+                                       placeholder="Your wallet name?" required/>
+                            </div>
+                        </div>
+                        <div className="p-5 mx-auto relative flex content-center">
+                            <div className='border-2 w-[256px] h-[64px] rounded-lg'>
 
                             </div>
-                            {/*<div className='border-2 w-[328px] h-[64px] rounded-lg'>*/}
-
-                            {/*</div>*/}
-
-
+                            <div className='border-2 w-[176px] h-[64px]  ml-8 rounded-lg'>
+                                <input type="number" name="balance" id="balance"
+                                       className=" border border-gray-300 text-black text-sm rounded-lg h-full w-full p-2.5 "
+                                       placeholder="0" required/>
+                            </div>
                         </div>
                         <div
                             className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
