@@ -4,8 +4,9 @@ import WalletHeader from "../Header/WalletHeader";
 const MyWallet = () => {
     return (
         <>
-            <WalletHeader/>
-
+            <div className='h-screen bg-gray-200 flex justify-center'>
+                    <WalletHeader/>
+            </div>
         </>
     );
 };
