@@ -14,7 +14,7 @@ const Login = () => {
                              src={icon}
                              alt=''
                         />
-                        <p className="text-4xl text-gray-900 text-white">Money Lover</p>
+                        <p className="text-4xl text-white">Money Lover</p>
                     </div>
                     <div className="absolute w-full flex flex-col items-center justify-center top-[14rem] md:p-2">
                         <div className="w-fit h-fit bg-white justify-center rounded-[20px] shadow-md p-8">
