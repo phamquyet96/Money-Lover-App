@@ -13,7 +13,7 @@ const WalletHeader = () => {
                             <div className="w-fit flex content-center">
                                 <FontAwesomeIcon className='mt-5 mr-8 cursor-pointer' icon={faArrowLeft} size="lg"
                                                  style={{color: "#595959",}}/>
-                                <p className='w-fit h-fit text-xl mt-4 font-medium font-roboto'>My Wallets</p>
+                                <p className='w-fit h-fit text-xl mt-4 font-semibold font-roboto'>My Wallets</p>
                                 <AddWalletModal />
                             </div>
                         </div>

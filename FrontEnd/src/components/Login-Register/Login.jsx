@@ -48,7 +48,7 @@ const Login = () => {
                                 </div>
                                 <div
                                     className="border-l-2 border-gray-300 h-[12rem] mb-8 mx-2"></div>
-                                <div className="w-[18rem] h-fit p-1">
+                                <div className="w-[18rem] h-fit p-1 mb-6">
                                     <h2 className="text-base text-left font-roboto text-gray-500 mb-4">Using Money Lover account</h2>
                                     <form className="space-y-6">
                                         <div>
@@ -65,8 +65,9 @@ const Login = () => {
                                                     className="w-full bg-green-500 text-white font-roboto py-2 rounded-md hover:bg-green-700 transition-colors duration-300 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">LOGIN
                                             </button>
                                         </div>
-                                        <div>
-                                            <p>Don’t have an account? <a href='/register'><p className='text-green-600 decoration-green-600 decoration-1'>Register</p></a></p>
+                                        <div className="flex">
+                                            <p>Don’t have an account? </p>
+                                            <a href='/register' className='text-green-600 decoration-green-600 decoration-1 ml-1'>Sign In</a>
                                         </div>
                                     </form>
                                 </div>
