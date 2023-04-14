@@ -10,7 +10,7 @@ const WalletHeader = () => {
                 <div className="w-full h-full-">
                     <div className="w-full h-[62px] bg-white shadow">
                         <div className="mx-52 h-[62px] flex ">
-                            <div className="w-fit flex content-center">
+                            <div className="w-fit flex">
                                 <a href="/dashboard">
                                 <FontAwesomeIcon className='mt-5 mr-8 cursor-pointer' icon={faArrowLeft} size="lg"
                                                  style={{color: "#595959",}}/>

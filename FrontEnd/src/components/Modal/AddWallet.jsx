@@ -3,8 +3,8 @@ const AddWalletModal = () => {
     return (
         <>
             <button type="button" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                    className="font-roboto ml-8 py-1 text-black hover:bg-green-400 font-medium text-xl px-3 py-2 text-center inline-flex items-center">
-                <svg aria-hidden="true" className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    className="font-roboto ml-8 mt-3.5 bg-button-green h-[32px] w-[146] text-white shadow-xl rounded-lg hover:bg-green-400 font-semibold text-l px-3 py-2 text-center inline-flex items-center">
+                <svg aria-hidden="true" className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                           d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
                 </svg>

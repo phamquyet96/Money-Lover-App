@@ -6,7 +6,7 @@ import iconWallet from "../../img/iconWallet.png";
 const WalletDetail = () => {
     return (
         <>
-            <div className='h-screen bg-gray-300 justify-center'>
+            <div className='h-screen bg-custom-gray justify-center'>
                 <div className="w-full h-[62px] text-center">
                     <div className="w-full h-full-">
                         <div className="w-full h-[62px] bg-white shadow">
@@ -23,7 +23,7 @@ const WalletDetail = () => {
                     </div>
                 </div>
                 <div className='w-[100vw] h-[100vh] flex justify-center'>
-                    <div className='shadow-lg bg-white rounded-md w-[665px] h-[64px] mt-10'>
+                    <div className='shadow-2xl bg-white rounded-md w-[665px] h-[64px] mt-10'>
                         <div
                             className='border-b rounded-t-md bg-white w-[665px] h-[64px] grid grid-cols-2 gap-2 content-center'>
                             <div>
@@ -38,7 +38,7 @@ const WalletDetail = () => {
                                 <div></div>
                             </div>
                         </div>
-                        <div className='h-[102px] bg-white grid grid-cols-6 gap-2 content-center border-b-2'>
+                        <div className='h-[102px] shadow-2xl bg-white grid grid-cols-6 gap-2 content-center border-b-2'>
                             <div className=' flex justify-center'>
                                 <img className='w-12'
                                      src={iconWallet}
@@ -50,7 +50,7 @@ const WalletDetail = () => {
                                 <p className='text-gray-400'>Amount</p>
                             </div>
                         </div>
-                        <div className='h-auto bg-white gap-2 content-center flex-col border-b-2'>
+                        <div className='h-auto shadow-2xl bg-white gap-2 content-center flex-col border-b-2'>
                             <div className='pt-2 pb-2.5 pl-8 '>
                                 <span>User</span>
                             </div>
@@ -71,7 +71,8 @@ const WalletDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='flex justify-center bg-white rounded-b-md hover:bg-green-100'>
+                        <div className='flex shadow-2xl
+                        justify-center bg-white rounded-b-md hover:bg-green-100'>
                             <div className=' my-4 text-green-400 font-roboto font-semibold'>
                                 <button>ADJUST BALANCE</button>
                             </div>
