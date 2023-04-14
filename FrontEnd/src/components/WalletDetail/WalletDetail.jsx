@@ -34,7 +34,7 @@ const WalletDetail = () => {
                                 <div></div>
                                 <button className='text-rose-400 font-roboto h-[40px] w-[80px] font-semibold rounded-lg hover:bg-rose-100'>DELETE</button>
                                 <div></div>
-                                <button className='text-green-400 font-roboto font-semibold h-[40px] w-[80px] rounded-lg hover:bg-green-100'>EDIT</button>
+                                <button className='text-green-400 font-roboto font-semibold h-[40px] w-[80px] rounded-lgd hover:bg-green-100'>EDIT</button>
                                 <div></div>
                             </div>
                         </div>

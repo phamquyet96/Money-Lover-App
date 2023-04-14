@@ -6,11 +6,14 @@ import Login from "./components/Login-Register/Login";
 import Register from "./components/Login-Register/Register";
 import MyWallet from "./components/MyWallet/MyWallet";
 import WalletDetail from "./components/WalletDetail/WalletDetail";
+import Dashboard from './components/Dashboard/Dashboard';
+
 
 function App() {
   return (
       <Routes>
         <Route path="/" element={<Homepage/>}></Route>
+        <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/logout" element={<Logout/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
@@ -21,4 +24,3 @@ function App() {
 }
 
 export default App;
-
