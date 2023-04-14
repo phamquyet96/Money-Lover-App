@@ -13,9 +13,9 @@ const AddWalletModal = () => {
             <div id="defaultModal" tabIndex="-1" aria-hidden="true"
                  className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div className="relative shadow-2xl bottom-60 w-fit max-w-2xl h-fit">
-                    <div className=" bg-white rounded-lg shadow dark:bg-gray-700">
-                        <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    <div className=" bg-white rounded-lg shadow">
+                        <div className="flex items-start justify-between p-4 border-b rounded-t">
+                            <h3 className="text-xl ml-2 font-semibold text-gray-900 ">
                                 Add a wallet first!
                             </h3>
                             <button type="button"
@@ -30,34 +30,40 @@ const AddWalletModal = () => {
                                 <span className="sr-only">Close modal</span>
                             </button>
                         </div>
-                        <div className="p-5 relative flex content-center mx-auto">
+                        <div className="pl-5 pt-5 relative flex content-center mx-auto">
                             <div className="border-2 w-[103px] h-[64px] rounded-lg">
 
                             </div>
-                            <div className='border-2 w-[328px] h-[64px] rounded-lg ml-8'>
-                                <input type="email" name="email" id="email"
-                                       className=" border border-gray-300 text-black text-sm rounded-lg h-full w-full p-2.5 "
+                            <div className="ml-8 h-[64px] border rounded-lg hover:border-gray-600 border-gray-300">
+                                <p className='text-left text-xs mt-1 font-light ml-3'>Wallet Name</p>
+                            <div className='w-[328px] h-[48px] rounded-lg'>
+                                <input style={{border:'none', outline:'none'}} type="walletName" name="walletName" id="walletName"
+                                       className="text-black text-xl rounded-lg w-full pt-1 pl-3 placeholder-gray-300"
                                        placeholder="Your wallet name?" required/>
+                            </div>
                             </div>
                         </div>
                         <div className="p-5 mx-auto relative flex content-center">
                             <div className='border-2 w-[256px] h-[64px] rounded-lg'>
 
                             </div>
-                            <div className='border-2 w-[176px] h-[64px]  ml-8 rounded-lg'>
-                                <input type="number" name="balance" id="balance"
-                                       className=" border border-gray-300 text-black text-sm rounded-lg h-full w-full p-2.5 "
-                                       placeholder="0" required/>
+                            <div className="ml-8 h-[64px] border rounded-lg hover:border-gray-600 border-gray-300">
+                                <p className='text-left text-xs mt-1 font-light ml-3'>Initial Balance</p>
+                                <div className='w-[176px] h-[48px] rounded-lg'>
+                                    <input style={{border:'none', outline:'none'}} type="text" name="balance" id="balance"
+                                           className="text-black text-xl rounded-lg w-full pt-1 pl-3 "
+                                           placeholder="0" required/>
+                                </div>
                             </div>
                         </div>
                         <div
                             className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button data-modal-hide="defaultModal" type="button"
-                                    className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                 Save
                             </button>
                             <button data-modal-hide="defaultModal" type="button"
-                                    className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline
+                                    className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Decline
                             </button>
                         </div>
                     </div>
