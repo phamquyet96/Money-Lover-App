@@ -5,6 +5,7 @@ import Logout from "./components/Logout/Logout";
 import Login from "./components/Login-Register/Login";
 import Register from "./components/Login-Register/Register";
 import MyWallet from "./components/MyWallet/MyWallet";
+import WalletDetail from "./components/WalletDetail/WalletDetail";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/my-wallet" element={<MyWallet/>}></Route>
+        <Route path="/wallet-detail" element={<WalletDetail/>}></Route>
       </Routes>
   );
 }
