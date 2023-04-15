@@ -28,8 +28,7 @@ const Register = () => {
             try {
                 let res = await axios.post('http://localhost:8000/api/auth/register', values);
                 setOpen(true);
-            }
-            catch (err) {
+            } catch (err) {
                 console.log(err.message)
                 setOpen(true);
             }
@@ -56,7 +55,8 @@ const Register = () => {
                                 <h2 className="text-3xl font-bold font-roboto items-center text-gray-800 mb-6 text-center">Register</h2>
                                 <div className="flex items-center justify-between mt-6">
                                     <div className="w-[18rem] h-80 p-1">
-                                        <h2 className="text-base text-left font-roboto text-gray-500 mt-1 mb-4">Using social
+                                        <h2 className="text-base text-left font-roboto text-gray-500 mt-1 mb-4">Using
+                                            social
                                             networking accounts</h2>
                                         <form className="space-y-3">
                                             <GoogleButton/>
@@ -79,22 +79,26 @@ const Register = () => {
                                     <div
                                         className="border-l-2 border-gray-300 h-[12rem] mb-8 mx-2"></div>
                                     <div className="w-[18rem] h-80 p-1 mb-6">
-                                        <h2 className="text-base text-left font-roboto text-gray-500 mb-4">Using Money Lover
+                                        <h2 className="text-base text-left font-roboto text-gray-500 mb-4">Using Money
+                                            Lover
                                             account</h2>
                                         <form onSubmit={formik.handleSubmit} className="space-y-6">
                                             <div>
-                                                <input type="email" name="email" id="email" placeholder="Email"  onChange={formik.handleChange}
+                                                <input type="email" name="email" id="email" placeholder="Email"
+                                                       onChange={formik.handleChange}
                                                        value={formik.values.email}
                                                        className="w-full font-roboto border-1 bg-gray-100 py-2 px-4 rounded-[10px] focus:outline-none focus:ring focus:ring-green-600 outline-2 hover:outline-green-500 "/>
-                                                {formik.errors.email && formik.touched.email && (<p style={{ color: 'red' }}>{formik.errors.email}</p>)}
+                                                {formik.errors.email && formik.touched.email && (
+                                                    <p style={{color: 'red'}}>{formik.errors.email}</p>)}
                                             </div>
                                             <div>
-                                                <input type="password" name="password" id="password" placeholder="Password" onChange={formik.handleChange}
+                                                <input type="password" name="password" id="password"
+                                                       placeholder="Password" onChange={formik.handleChange}
                                                        value={formik.values.password}
                                                        autoComplete='current-password'
                                                        className="w-full font-roboto bg-gray-100 py-2 px-4 rounded-[10px] focus:outline-none focus:ring focus:ring-green-600 "/>
                                                 {formik.errors.password && formik.touched.password && (
-                                                    <p style={{ color: 'red' }}>{formik.errors.password}</p>)}
+                                                    <p style={{color: 'red'}}>{formik.errors.password}</p>)}
                                             </div>
                                             <div>
                                                 <button type="submit"
@@ -103,7 +107,9 @@ const Register = () => {
                                             </div>
                                             <div className="flex">
                                                 <p>Don’t have an account?</p>
-                                                <a href="/auth/login" className='text-green-600 decoration-green-600 decoration-1 ml-2'>Sign In</a>
+                                                <a href="/auth/login"
+                                                   className='text-green-600 decoration-green-600 decoration-1 ml-2'>Sign
+                                                    In</a>
                                             </div>
                                         </form>
                                     </div>

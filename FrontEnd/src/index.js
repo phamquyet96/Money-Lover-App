@@ -8,19 +8,32 @@ import {Provider} from "react-redux";
 import store, {persistor} from "./store/store";
 import {PersistGate} from "redux-persist/integration/react";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-            <BrowserRouter>
-                <React.StrictMode>
-                    <App/>
-                </React.StrictMode>
-            </BrowserRouter>
-            </PersistGate>
-        </Provider>
-    );
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+//     root.render(
+//         <Provider store={store}>
+//             <PersistGate loading={null} persistor={persistor}>
+//             <BrowserRouter>
+//                 <React.StrictMode>
+//                     <App/>
+//                 </React.StrictMode>
+//             </BrowserRouter>
+//             </PersistGate>
+//         </Provider>
+//     );
+import { ProSidebarProvider } from "react-pro-sidebar";
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <React.StrictMode>
+                <ProSidebarProvider>
+                    <App />
+                </ProSidebarProvider>
+            </React.StrictMode>
+        </BrowserRouter>
+    </Provider>
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
