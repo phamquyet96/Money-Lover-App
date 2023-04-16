@@ -51,7 +51,7 @@ const Login = () => {
     return (
         <>
         <GoogleOAuthProvider
-            clientId='49821641657-ppps5mt6t44ov296au870ipdfp4fi9lf.apps.googleusercontent.com'>
+            clientId='441527544423-2k0a7strau12sutqqp6g2va34j092vd2.apps.googleusercontent.com'>
             <div className='h-screen bg-gray-200 flex justify-center'>
                 <div className="w-full h-[400px] text-center">
                     <div className="w-full h-full-">

@@ -15,16 +15,10 @@ export default function GoogleButton() {
     const login = useGoogleLogin({
         onSuccess: async response => {
             try {
-                // Gọi API lấy data user google
-                const result = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo.email', {
-                    headers: {
-                        'Authorization': 'Bearer ' + response.access_token
-                    }
-                })
-
-                // Gọi API xét login
-                axios.post('http://localhost:8000/api/auth/login/google',result.data)
+                axios.post('http://localhost:8000/api/auth/login/google')
                     .then((res) => {
+                        localStorage.setItem('accessToken', res.data.accessToken)
+                        localStorage.setItem('refreshToken', res.data.refreshToken)
                         console.log("success")
                         navigate('/dashboard')
                     })
