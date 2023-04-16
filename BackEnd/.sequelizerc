@@ -1,0 +1,13 @@
+const path = require('path');
+
+
+//Những đường link này nói cho Sequelizerc biết nơi nào nó có thể cấu hình.
+module.exports = {
+    'config': path.resolve('./src/config', 'config.json'), //nói cho sequelizerc làm sao kết nối được với database
+    'migrations-path': path.resolve('./src', 'migrations'), // cách tạo bảng trong database
+    'models-path': path.resolve('./src', 'models'), // nó sẽ tạo module cho ta trong mô hình MVC
+    'seeders-path': path.resolve('./src', 'seeders') // nó sẽ tạo dữ liệu fake cho chúng ta
+}
+
+//https://mherman.org/blog/node-postgres-sequelize/
+
