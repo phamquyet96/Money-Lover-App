@@ -6,6 +6,7 @@ import Login from "./components/Login-Register/Login";
 import Register from "./components/Login-Register/Register";
 import Forgot from "./components/Forgot_pass/Forgot";
 import Dashboard from "./components/Dashboard/Dashboard";
+import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/auth/login" element={<Login/>}></Route>
         <Route path="/auth/register" element={<Register/>}></Route>
         <Route path="/forgot" element={<Forgot/>}></Route>
+        <Route path="/updateProfile" element={<UpdateProfile/>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
       </Routes>
   );
