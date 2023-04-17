@@ -39,15 +39,11 @@ class App {
             keys: [this.appConfig.sessionKey],
             maxAge: this.appConfig.sessionMaxAge,
         }));
-        this.app.use((0, cors_1.default)({
-            credentials: true,
-            origin: this.appConfig.baseURL,
-            methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
-        }));
-        this.app.use("/api/auth", auth_router_1.default);
+        this.app.use((0, cors_1.default)());
+        this.app.use("/api/auth", (0, cors_1.default)(), auth_router_1.default);
         this.app.use(auth_middlewares_1.default.checkAuthentication);
         this.app.use("/api/wallet", wallet_router_1.default);
-        this.app.use("/api/user", user_router_1.default);
+        this.app.use("/api/user", (0, cors_1.default)(), user_router_1.default);
     }
     listen() {
         this.app.listen(this.appConfig.port, () => {

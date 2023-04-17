@@ -13,6 +13,7 @@ const userRepo = dataSource.getRepository(User);
 class AuthServices extends BaseServices {
 
     static async register({ name, email, password, googleId, image, refreshToken, active }): Promise<User> {
+        console.log(email);
         await this.validateEmail(email);
         await this.validatePassword(password);
         const user = new User();
