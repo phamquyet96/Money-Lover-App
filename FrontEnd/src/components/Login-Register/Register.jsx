@@ -4,43 +4,15 @@ import {GoogleLogin, GoogleOAuthProvider} from "@react-oauth/google";
 import {Formik, useFormik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
-import {authActions} from "../../feature/auth/authSlice";
-import {useDispatch} from "react-redux";
 import GoogleButton from "../Button/GoogleButton";
+import Swal from "sweetalert2";
+import {useNavigate} from "react-router-dom";
 
 
 const Register = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            name: '', email: '', password: ''
-        }, validationSchema: Yup.object({
-            name: Yup.string()
-                .min(8, 'Name must be at least 8 characters')
-                .required('Name is required'),
-            email: Yup.string()
-                .email('Invalid email address')
-                .required('Email is required'),
-            password: Yup.string()
-                .min(8, 'Password must be at least 8 characters')
-                .required('Password is required'),
-        }), onSubmit: (values) => {
-            console.log(2)
-            try {
-                let res = axios.post('http://localhost:8000/api/auth/register', values);
-                console.log(res, values)
-            } catch (err) {
-                console.log(err.message)
-            }
-        }
-    })
-
+    const navigate=useNavigate();
 
     const SignupSchema= Yup.object().shape({
-            name: Yup.string()
-            .min(8, 'Name must be at least 8 characters')
-            .required('Name is required'),
             email: Yup.string()
             .email('Invalid email address')
             .required('Email is required'),
@@ -98,38 +70,41 @@ const Register = () => {
                                         account</h2>
                                     <Formik
                                         initialValues= {
-                                            {name: '', email: '', password: ''}
+                                            { email: '', password: ''}
                                     }
-                                //      validationSchema= {Yup.object({
-                                //     name: Yup.string()
-                                //     .min(8, 'Name must be at least 8 characters')
-                                //     .required('Name is required'), email: Yup.string()
-                                //     .email('Invalid email address')
-                                //     .required('Email is required'), password: Yup.string()
-                                //     .min(8, 'Password must be at least 8 characters')
-                                //     .required('Password is required'),
-                                // })}
+                                    validationSchema={SignupSchema}
                                     onSubmit= {(values) => {
                                         console.log(values)
                                     try {
-                                        let res = axios.post('http://localhost:8000/api/auth/register', values);
+                                        let res = axios.post('http://localhost:8000/api/auth/register', values)
+                                            .then(Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'You are register success!',
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                            }))
+                                            .then(navigate("/auth/login"))
                                     } catch (err) {
                                         console.log(err.message)
                                 }}
                                 } >
                                         {({
+                                              errors,
+                                              touched,
                                               values,
                                               handleSubmit,
                                               handleChange,
-                                          }) => (
+                                          }) =>{
+                                            return (
                                         <form onSubmit={handleSubmit}  className="space-y-6">
                                             <div>
                                                 <input type="email" name="email" id="email" placeholder="Email"
                                                        onChange={handleChange}
                                                        value={values.email}
                                                        className="w-full font-roboto border-1 bg-gray-100 py-2 px-4 rounded-[10px] focus:outline-none focus:ring focus:ring-green-600 outline-2 hover:outline-green-500 "/>
-                                                {formik.errors.email && formik.touched.email && (
-                                                    <p style={{color: 'red'}}>{formik.errors.email}</p>)}
+                                                {errors.email && touched.email && (
+                                                    <p style={{color: 'red'}}>{errors.email}</p>)}
                                             </div>
                                             <div>
                                                 <input type="password" name="password" id="password"
@@ -137,8 +112,8 @@ const Register = () => {
                                                       value={values.password}
                                                        autoComplete='current-password'
                                                        className="w-full font-roboto bg-gray-100 py-2 px-4 rounded-[10px] focus:outline-none focus:ring focus:ring-green-600 "/>
-                                                {formik.errors.password && formik.touched.password && (
-                                                    <p style={{color: 'red'}}>{formik.errors.password}</p>)}
+                                                {errors.password && touched.password && (
+                                                    <p style={{color: 'red'}}>{errors.password}</p>)}
                                             </div>
                                             <div>
                                                 <button type="submit"
@@ -151,7 +126,7 @@ const Register = () => {
                                                    className='text-green-600 decoration-green-600 decoration-1 ml-2'>Sign
                                                     In</a>
                                             </div>
-                                        </form>)}
+                                        </form>)}}
                                     </Formik>
                                 </div>
                             </div>
