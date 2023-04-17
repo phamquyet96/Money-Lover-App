@@ -14,6 +14,7 @@ class AuthController extends BaseController {
 
     static async register(req: Request, res: Response) {
         try {
+            console.log(req.body);
             const user = await AuthServices.register(req.body);
             console.log(user)
             await AuthServices.sendEmailVerificationRequest(req.body.email);

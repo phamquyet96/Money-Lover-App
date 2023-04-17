@@ -45,16 +45,12 @@ class App {
       })
     );
     this.app.use(
-      cors({
-        credentials: true,
-        origin: this.appConfig.baseURL,
-        methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
-      })
+      cors()
     );
-    this.app.use("/api/auth", AuthRouter);
+    this.app.use("/api/auth",cors(), AuthRouter);
     this.app.use(AuthMiddleware.checkAuthentication);
     this.app.use("/api/wallet", WalletRouter);
-    this.app.use("/api/user", UserRouter);
+    this.app.use("/api/user",cors(), UserRouter);
   }
 
   private listen(): void {

@@ -25,6 +25,7 @@ const userRepo = data_source_1.default.getRepository(user_model_1.default);
 class AuthServices extends base_services_1.default {
     static register({ name, email, password, googleId, image, refreshToken, active }) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(email);
             yield this.validateEmail(email);
             yield this.validatePassword(password);
             const user = new user_model_1.default();

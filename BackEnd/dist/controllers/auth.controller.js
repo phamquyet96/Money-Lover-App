@@ -22,6 +22,7 @@ class AuthController extends base_controller_1.default {
     static register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log(req.body);
                 const user = yield auth_services_1.default.register(req.body);
                 console.log(user);
                 yield auth_services_1.default.sendEmailVerificationRequest(req.body.email);
