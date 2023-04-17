@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const auth_controller_1 = __importDefault(require("../controllers/auth.controller"));
 const auth_middlewares_1 = __importDefault(require("../middlewares/auth.middlewares"));
+// tslint:disable-next-line:no-var-requires
 require('dotenv').config();
 const AuthRouter = express_1.default.Router();
 AuthRouter.post('/register', auth_controller_1.default.register);

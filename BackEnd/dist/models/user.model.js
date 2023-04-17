@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
 const wallet_model_1 = __importDefault(require("./wallet.model"));
-const trans_subcate_model_1 = __importDefault(require("./trans.subcate.model"));
 let User = class User {
 };
 __decorate([
@@ -32,27 +31,21 @@ __decorate([
 ], User.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "google_id", type: "varchar", length: 500, nullable: true })
-    //@ts-ignore
+    // @ts-ignore
 ], User.prototype, "googleId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "facebook_id", type: "varchar", length: 500, nullable: true })
-    //@ts-ignore
+    // @ts-ignore
 ], User.prototype, "facebookId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "github_id", type: "varchar", length: 500, nullable: true })
-    //@ts-ignore
+    // @ts-ignore
 ], User.prototype, "githubId", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => wallet_model_1.default, wallet => wallet.user, {
         cascade: true
     })
 ], User.prototype, "wallets", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => trans_subcate_model_1.default, transSubCate => transSubCate.user, {
-        cascade: true
-    })
-    //@ts-ignore
-], User.prototype, "transSubCates", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "refresh_token", type: "longtext", nullable: true })
 ], User.prototype, "refreshToken", void 0);

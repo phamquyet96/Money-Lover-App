@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const data_source_1 = __importDefault(require("../database/data-source"));
 const user_model_1 = __importDefault(require("../models/user.model"));
-let userRepo = data_source_1.default.getRepository(user_model_1.default);
+const userRepo = data_source_1.default.getRepository(user_model_1.default);
 class UserServices {
     static updateUser(userId, userImage) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -25,7 +25,7 @@ class UserServices {
     }
     static getUserByEmail(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield userRepo.findOneBy({ email: email });
+            return yield userRepo.findOneBy({ email });
         });
     }
 }

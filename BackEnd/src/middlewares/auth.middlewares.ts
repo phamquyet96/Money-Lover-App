@@ -2,21 +2,23 @@ import dataSource from "../database/data-source";
 import User from "../models/user.model";
 import jwt from 'jsonwebtoken';
 import BaseController from "../controllers/base.controller";
+// tslint:disable-next-line:no-var-requires
 require('dotenv').config();
 
-let userRepo = dataSource.getRepository(User);
+const userRepo = dataSource.getRepository(User);
 
 class AuthMiddleware {
 
     static checkAuthentication(req, res, next) {
         const authHeader = req.headers.authorization;
+        console.log(1,authHeader)
         if (authHeader) {
             const token = authHeader.split(" ")[1];
             jwt.verify(token, `${process.env.JWT_SECRET_KEY}`, async (err, decoded) => {
                 if (err) {
                     return res.status(403).json("Token is not valid!");
                 }
-                let user = await userRepo.findOneBy({id: decoded.id});
+                const user = await userRepo.findOneBy({id: decoded.id});
                 if (!user) {
                     return res.status(401).json({message: 'Unauthorized!'});
                 }
@@ -35,9 +37,9 @@ class AuthMiddleware {
             if (err) {
                 return res.status(403).json("Refresh token is not valid!");
             }
-            let user = await userRepo.findOneBy({id: decoded.id});
+            const user = await userRepo.findOneBy({id: decoded.id});
             if (user.refreshToken === refreshToken) {
-                let payload = {
+                const payload = {
                     id: user.id,
                     email: user.email,
                     name: user.name,

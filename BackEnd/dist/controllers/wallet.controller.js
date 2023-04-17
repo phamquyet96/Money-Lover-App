@@ -13,12 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const base_controller_1 = __importDefault(require("./base.controller"));
-const transaction_services_1 = __importDefault(require("../services/transaction.services"));
 const wallet_services_1 = __importDefault(require("../services/wallet.services"));
 class WalletController extends base_controller_1.default {
     static getAllWalletsOfUser(req, res) {
-        //@ts-ignore
-        let userId = req.user.id;
+        // @ts-ignore
+        const userId = req.user.id;
         wallet_services_1.default.getAllWalletsOfUser(userId)
             .then(wallets => {
             res.status(200).json(wallets);
@@ -28,22 +27,22 @@ class WalletController extends base_controller_1.default {
         });
     }
     static getDetailInfoOfWallet(req, res) {
-        let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
         wallet_services_1.default.getAllInfoOfWallet(walletId)
             .then(wallet => {
             res.json(wallet);
         });
     }
     static getDetailInfoOfAllWallets(req, res) {
-        //@ts-ignore
-        let userId = req.user.id;
+        // @ts-ignore
+        const userId = req.user.id;
         wallet_services_1.default.getALlWalletsInfoOfUser(userId)
             .then(wallets => {
             res.json(wallets);
         });
     }
     static getWallet(req, res) {
-        let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
         wallet_services_1.default.getWalletById(walletId)
             .then(wallet => {
             res.status(200).json(wallet);
@@ -55,8 +54,7 @@ class WalletController extends base_controller_1.default {
     static adjustBalance(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { walletId, balance } = req.body;
-                yield transaction_services_1.default.addTransactionToAdjustBalance(req.user.id, walletId, balance);
+                const { walletId, balance } = req.body;
                 yield wallet_services_1.default.updateBalance(walletId);
                 res.status(200).json({ message: "Adjusted balance succesfully!" });
             }
@@ -68,8 +66,8 @@ class WalletController extends base_controller_1.default {
     static getTotalBalance(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                //@ts-ignore
-                let totalBalance = yield wallet_services_1.default.getTotalBalance(req.user.id);
+                // @ts-ignore
+                const totalBalance = yield wallet_services_1.default.getTotalBalance(req.user.id);
                 return res.status(200).json(totalBalance);
             }
             catch (err) {
@@ -78,7 +76,7 @@ class WalletController extends base_controller_1.default {
         });
     }
     static getTotalIncomeExpenseOfWallet(req, res) {
-        let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
         wallet_services_1.default.getTotalIncomeExpenseOfWallet(walletId)
             .then(result => {
             res.status(200).json(result);
@@ -88,9 +86,9 @@ class WalletController extends base_controller_1.default {
         });
     }
     static getWalletsByIncludedIntotal(req, res) {
-        //@ts-ignore
-        let userId = req.user.id;
-        let isIncluded = req.params.isIncluded == "true" ? true : false;
+        // @ts-ignore
+        const userId = req.user.id;
+        const isIncluded = req.params.isIncluded === "true" ? true : false;
         wallet_services_1.default.getWalletsByIncludedInTotal(userId, isIncluded)
             .then(wallets => {
             res.status(200).json(wallets);
@@ -113,11 +111,11 @@ class WalletController extends base_controller_1.default {
     }
     static addWallet(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            //@ts-ignore
-            let userId = req.user.id;
-            let name = req.body.name;
-            let initialBalance = req.body.initialBalance;
-            let includeTotal = req.body.includeTotal;
+            // @ts-ignore
+            const userId = req.user.id;
+            const name = req.body.name;
+            const initialBalance = req.body.initialBalance;
+            const includeTotal = req.body.includeTotal;
             try {
                 yield wallet_services_1.default.addWallet(userId, name, initialBalance, includeTotal);
                 res.status(200).json({ message: "Add wallet successfully" });
@@ -129,7 +127,7 @@ class WalletController extends base_controller_1.default {
     }
     static deleteWallet(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let walletId = Number(req.params.walletId);
+            const walletId = Number(req.params.walletId);
             wallet_services_1.default.deleteWallet(walletId)
                 .then(() => {
                 res.status(200).json({ message: "Delete wallet successfully" });
