@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import Wallet from "./wallet.model";
-import TransSubCate from "./trans.subcate.model";
 
 @Entity()
 
@@ -22,15 +21,15 @@ export class User {
     image: string;
 
     @Column({ name: "google_id", type: "varchar", length: 500, nullable: true })
-        //@ts-ignore
+        // @ts-ignore
     googleId: string;
 
     @Column({ name: "facebook_id", type: "varchar", length: 500, nullable: true })
-        //@ts-ignore
+        // @ts-ignore
     facebookId: string;
 
     @Column({ name: "github_id", type: "varchar", length: 500, nullable: true })
-        //@ts-ignore
+        // @ts-ignore
     githubId: string;
 
     @OneToMany(() => Wallet, wallet => wallet.user, {
@@ -38,11 +37,11 @@ export class User {
     })
     wallets: Wallet[];
 
-    @OneToMany(() => TransSubCate, transSubCate => transSubCate.user, {
-        cascade: true
-    })
-        //@ts-ignore
-    transSubCates: TransSubCate[];
+    // @OneToMany(() => TransSubCate, transSubCate => transSubCate.user, {
+    //     cascade: true
+    // })
+    //     // @ts-ignore
+    // transSubCates: TransSubCate[];
 
     @Column({name: "refresh_token", type: "longtext", nullable: true})
     refreshToken: string;

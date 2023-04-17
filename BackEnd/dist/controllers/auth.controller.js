@@ -17,14 +17,13 @@ const base_controller_1 = __importDefault(require("./base.controller"));
 const user_model_1 = __importDefault(require("../models/user.model"));
 const auth_services_1 = __importDefault(require("../services/auth.services"));
 const base_services_1 = __importDefault(require("../services/base.services"));
-const transsubcate_services_1 = __importDefault(require("../services/transsubcate.services"));
-let userRepo = data_source_1.default.getRepository(user_model_1.default);
+const userRepo = data_source_1.default.getRepository(user_model_1.default);
 class AuthController extends base_controller_1.default {
     static register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let user = yield auth_services_1.default.register(req.body);
-                yield transsubcate_services_1.default.addDefaultSubCategoriesForUser(user.id);
+                const user = yield auth_services_1.default.register(req.body);
+                console.log(user);
                 yield auth_services_1.default.sendEmailVerificationRequest(req.body.email);
                 res.status(200).json({ message: 'An email has been sent to your email. Please verify your email to continue' });
             }
@@ -36,11 +35,11 @@ class AuthController extends base_controller_1.default {
     static login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { email, password } = req.body;
-                let [accessToken, refreshToken] = yield auth_services_1.default.checkAuthAndGenerateTokens(email, password);
+                const { email, password } = req.body;
+                const [accessToken, refreshToken] = yield auth_services_1.default.checkAuthAndGenerateTokens(email, password);
                 res.status(200).json({
-                    accessToken: accessToken,
-                    refreshToken: refreshToken,
+                    accessToken,
+                    refreshToken,
                 });
             }
             catch (err) {
@@ -58,7 +57,7 @@ class AuthController extends base_controller_1.default {
     static changePassword(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { oldPassword, newPassword } = req.body;
+                const { oldPassword, newPassword } = req.body;
                 yield auth_services_1.default.changePassword(req.user, oldPassword, newPassword);
                 res.status(200).json({ message: 'Reset password successfully!' });
             }
@@ -70,27 +69,28 @@ class AuthController extends base_controller_1.default {
     static loginWithGoogle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let user = yield userRepo.findOneBy({ googleId: req.body.sub });
+            console.log(user);
             if (!user) {
                 req.body.password = base_controller_1.default.getRandomString();
                 req.body.image = req.body.picture;
                 req.body.googleId = req.body.sub;
                 req.body.active = true;
                 user = yield auth_services_1.default.register(req.body);
-                transsubcate_services_1.default.addDefaultSubCategoriesForUser(user.id);
             }
-            let accessToken = base_services_1.default.generateAccessToken(user);
-            let refreshToken = base_services_1.default.generateRefreshToken(user);
+            const accessToken = base_services_1.default.generateAccessToken(user);
+            const refreshToken = base_services_1.default.generateRefreshToken(user);
             user.refreshToken = refreshToken;
             yield userRepo.save(user);
             res.status(200).json({
-                accessToken: accessToken,
-                refreshToken: refreshToken,
+                accessToken,
+                refreshToken,
             });
         });
     }
     static verifyEmail(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                console.log(req.body);
                 yield auth_services_1.default.verifyEmail(req.body);
                 res.status(200).json({ message: "Email verified" });
             }

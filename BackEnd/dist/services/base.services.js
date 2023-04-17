@@ -16,19 +16,19 @@ const data_source_1 = __importDefault(require("../database/data-source"));
 const user_model_1 = __importDefault(require("../models/user.model"));
 const user_services_1 = __importDefault(require("./user.services"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-let userRepo = data_source_1.default.getRepository(user_model_1.default);
+const userRepo = data_source_1.default.getRepository(user_model_1.default);
 class BaseServices {
     static validateEmail(email) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!email) {
                 throw new Error("Email is required");
             }
-            let regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            let isValidEmail = regEmail.test(email);
+            const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const isValidEmail = regEmail.test(email);
             if (!isValidEmail) {
                 throw new Error("Invalid email");
             }
-            let user = yield user_services_1.default.getUserByEmail(email);
+            const user = yield user_services_1.default.getUserByEmail(email);
             if (user) {
                 throw new Error("Email already exists");
             }
@@ -49,13 +49,13 @@ class BaseServices {
         return randomString;
     }
     static generateAccessToken(user) {
-        let { id, email, name, image } = user;
-        let payload = { id, email, name, image };
+        const { id, email, name, image } = user;
+        const payload = { id, email, name, image };
         return jsonwebtoken_1.default.sign(payload, `${process.env.JWT_SECRET_KEY}`, { expiresIn: "15m" });
     }
     static generateRefreshToken(user) {
-        let { id, email, name, image } = user;
-        let payload = { id, email, name, image };
+        const { id, email, name, image } = user;
+        const payload = { id, email, name, image };
         return jsonwebtoken_1.default.sign(payload, `${process.env.JWT_REFRESH_KEY}`);
     }
     ;

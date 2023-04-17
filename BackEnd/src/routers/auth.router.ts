@@ -1,6 +1,7 @@
 import express, {Router} from 'express';
 import AuthController from "../controllers/auth.controller";
 import AuthMiddleware from "../middlewares/auth.middlewares";
+// tslint:disable-next-line:no-var-requires
 require('dotenv').config();
 
 const AuthRouter: Router = express.Router();

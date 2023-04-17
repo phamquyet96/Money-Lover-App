@@ -12,46 +12,39 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Wallet = void 0;
 const typeorm_1 = require("typeorm");
 const user_model_1 = __importDefault(require("./user.model"));
-const transaction_model_1 = __importDefault(require("./transaction.model"));
 let Wallet = class Wallet {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ name: "id", type: "int" })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => user_model_1.default, user => user.wallets, {
         onDelete: "CASCADE"
     }),
     (0, typeorm_1.JoinColumn)({ name: "user_id" })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "user", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "name", type: "varchar", length: 255, nullable: false })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "name", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "balance", type: "int", nullable: false })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "balance", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "initial_balance", type: "int", nullable: false })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "initialBalance", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "include_total", type: "boolean", default: true })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "includeTotal", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "active", type: "boolean", default: true })
-    //@ts-ignore
+    // @ts-ignore
 ], Wallet.prototype, "active", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => transaction_model_1.default, transaction => transaction.wallet, {
-        cascade: true
-    })
-    //@ts-ignore
-], Wallet.prototype, "transactions", void 0);
 Wallet = __decorate([
     (0, typeorm_1.Entity)(),
     (0, typeorm_1.Index)(["user", "name"], { unique: true })

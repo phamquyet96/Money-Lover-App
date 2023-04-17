@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
+// tslint:disable-next-line:no-var-requires
 require('dotenv').config();
 
 class BaseController {
-    
+
     static defaultErrorMessage = "Something is wrong!";
 
     static getRandomString(): string{

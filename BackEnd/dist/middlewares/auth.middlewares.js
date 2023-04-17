@@ -16,18 +16,20 @@ const data_source_1 = __importDefault(require("../database/data-source"));
 const user_model_1 = __importDefault(require("../models/user.model"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const base_controller_1 = __importDefault(require("../controllers/base.controller"));
+// tslint:disable-next-line:no-var-requires
 require('dotenv').config();
-let userRepo = data_source_1.default.getRepository(user_model_1.default);
+const userRepo = data_source_1.default.getRepository(user_model_1.default);
 class AuthMiddleware {
     static checkAuthentication(req, res, next) {
         const authHeader = req.headers.authorization;
+        console.log(1, authHeader);
         if (authHeader) {
             const token = authHeader.split(" ")[1];
             jsonwebtoken_1.default.verify(token, `${process.env.JWT_SECRET_KEY}`, (err, decoded) => __awaiter(this, void 0, void 0, function* () {
                 if (err) {
                     return res.status(403).json("Token is not valid!");
                 }
-                let user = yield userRepo.findOneBy({ id: decoded.id });
+                const user = yield userRepo.findOneBy({ id: decoded.id });
                 if (!user) {
                     return res.status(401).json({ message: 'Unauthorized!' });
                 }
@@ -47,9 +49,9 @@ class AuthMiddleware {
             if (err) {
                 return res.status(403).json("Refresh token is not valid!");
             }
-            let user = yield userRepo.findOneBy({ id: decoded.id });
+            const user = yield userRepo.findOneBy({ id: decoded.id });
             if (user.refreshToken === refreshToken) {
-                let payload = {
+                const payload = {
                     id: user.id,
                     email: user.email,
                     name: user.name,
