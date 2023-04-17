@@ -17,6 +17,7 @@ import ExitToApp from "@mui/icons-material/ExitToApp";
 import CancelSharpIcon from "@mui/icons-material/CancelSharp";
 
 
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -34,6 +35,11 @@ export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const logout = () => {
+    localStorage.removeItem("token-info");
+    handleClose(false);
+  };
 
   return (
     <div>
@@ -106,7 +112,8 @@ export default function BasicModal() {
                   variant="text"
                   color="success"
                   startIcon={<ExitToApp />}
-                  onClick={handleClose}
+                  onClickCapture={logout}
+                  href="/auth/logout"
                 >
                   Logout
                 </Button>
