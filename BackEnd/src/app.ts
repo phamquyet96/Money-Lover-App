@@ -5,14 +5,10 @@ import cookieSession from "cookie-session";
 import AppConfig from "./config/app.config";
 import AuthRouter from "./routers/auth.router";
 import AuthMiddleware from "./middlewares/auth.middlewares";
-import TransSubCateRouter from "./routers/transsubcate.router";
-import TransactionRouter from "./routers/transaction.router";
 import WalletRouter from "./routers/wallet.router";
 import UserRouter from "./routers/user.router";
-import TransTypeRouter from "./routers/transtype.router";
-import TransCateRouter from "./routers/transcate.router";
 import dataSource from "./database/data-source";
-import Transaction from "./models/transaction.model";
+import bodyParser from "body-parser";
 class App {
   private app: express.Application = express();
 
@@ -39,8 +35,8 @@ class App {
         createParentPath: true,
       })
     );
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(
       cookieSession({
         name: "session",
@@ -55,27 +51,10 @@ class App {
         methods: ["POST", "PUT", "PATCH", "GET", "OPTIONS", "HEAD", "DELETE"],
       })
     );
-
-    // Test
-
-    this.app.use('/test', async (req, res) => {
-      let transactionRepo = dataSource.getRepository(Transaction)
-      let result = await transactionRepo.createQueryBuilder('trans')
-          .where('trans.date >= :startDate', {startDate: '2023-02-22'})
-          .getMany()
-      res.json(result)
-    })
-
-    //
-
     this.app.use("/api/auth", AuthRouter);
     this.app.use(AuthMiddleware.checkAuthentication);
     this.app.use("/api/wallet", WalletRouter);
-    this.app.use("/api/transaction-subcategory", TransSubCateRouter);
-    this.app.use("/api/transaction-category", TransCateRouter);
     this.app.use("/api/user", UserRouter);
-    this.app.use("/api/transaction", TransactionRouter);
-    this.app.use("/api/type", TransTypeRouter);
   }
 
   private listen(): void {
@@ -89,4 +68,4 @@ class App {
 new App();
 
 
-//npm run dev:start
+// npm run dev:start

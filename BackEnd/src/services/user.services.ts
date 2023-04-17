@@ -2,7 +2,7 @@ import BaseServices from "./base.services";
 import dataSource from "../database/data-source";
 import User from "../models/user.model";
 
-let userRepo = dataSource.getRepository(User)
+const userRepo = dataSource.getRepository(User)
 
 class UserServices {
     static async updateUser(userId: number, userImage: string): Promise<void> {
@@ -11,7 +11,7 @@ class UserServices {
         await userRepo.save(user)
     }
     static async getUserByEmail(email: string) {
-        return await userRepo.findOneBy({email: email});
+        return await userRepo.findOneBy({email});
     }
 }
 

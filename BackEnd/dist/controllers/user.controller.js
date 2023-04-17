@@ -17,9 +17,9 @@ const user_services_1 = __importDefault(require("../services/user.services"));
 class UserController extends base_controller_1.default {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let id = req.user.id;
-            let arr = Object.keys(req.body);
-            let image = arr[0].replace('upload/', 'upload%2F') + '=' + req.body[arr[0]] + '&' + arr[1] + '=' + req.body[arr[1]];
+            const id = req.user.id;
+            const arr = Object.keys(req.body);
+            const image = arr[0].replace('upload/', 'upload%2F') + '=' + req.body[arr[0]] + '&' + arr[1] + '=' + req.body[arr[1]];
             yield user_services_1.default.updateUser(id, image);
             res.status(200).json({
                 message: 'Update successfully!'
