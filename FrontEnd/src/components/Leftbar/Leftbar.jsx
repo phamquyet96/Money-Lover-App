@@ -7,7 +7,7 @@ import {
 } from "react-pro-sidebar";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
@@ -24,6 +24,11 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+
+import BasicModal from "../Modal/Modal";
+
+
+
 function Leftbar() {
   const { collapseSidebar, toggleSidebar, toggled } = useProSidebar();
 
@@ -42,6 +47,7 @@ function Leftbar() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  
 
   return (
     <div
@@ -66,9 +72,10 @@ function Leftbar() {
           </MenuItem>
 
           <SubMenu icon={<MenuOutlinedIcon />} label="Profile">
-            <MenuItem icon={<PeopleOutlinedIcon />}>
-              Manage my account{" "}
+            <MenuItem>
+              <BasicModal/> 
             </MenuItem>
+
             <MenuItem icon={<AccountBalanceWalletOutlinedIcon />}>
               Wallet
             </MenuItem>
