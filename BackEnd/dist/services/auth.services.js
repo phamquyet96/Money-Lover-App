@@ -19,14 +19,15 @@ const user_model_1 = __importDefault(require("../models/user.model"));
 const user_services_1 = __importDefault(require("./user.services"));
 const nodemailer_config_1 = __importDefault(require("../config/nodemailer.config"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+// tslint:disable-next-line:no-var-requires
 require('dotenv').config();
-let userRepo = data_source_1.default.getRepository(user_model_1.default);
+const userRepo = data_source_1.default.getRepository(user_model_1.default);
 class AuthServices extends base_services_1.default {
     static register({ name, email, password, googleId, image, refreshToken, active }) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.validateEmail(email);
             yield this.validatePassword(password);
-            let user = new user_model_1.default();
+            const user = new user_model_1.default();
             user.email = email;
             user.password = yield bcrypt_1.default.hash(password, 10);
             user.name = name;
@@ -40,19 +41,19 @@ class AuthServices extends base_services_1.default {
     }
     static checkAuthAndGenerateTokens(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
-            let user = yield user_services_1.default.getUserByEmail(email);
+            const user = yield user_services_1.default.getUserByEmail(email);
             if (!user) {
                 throw new Error("Wrong email or password");
             }
-            let match = yield bcrypt_1.default.compare(password, user.password);
+            const match = yield bcrypt_1.default.compare(password, user.password);
             if (!match) {
                 throw new Error("Wrong email or password");
             }
-            if (!user.active) {
-                throw new Error("Please verify your email to login");
-            }
-            let accessToken = this.generateAccessToken(user);
-            let refreshToken = this.generateRefreshToken(user);
+            // if (!user.active) {
+            //     throw new Error("Please verify your email to login");
+            // }
+            const accessToken = this.generateAccessToken(user);
+            const refreshToken = this.generateRefreshToken(user);
             user.refreshToken = refreshToken;
             userRepo.save(user);
             return [accessToken, refreshToken];
@@ -60,8 +61,8 @@ class AuthServices extends base_services_1.default {
     }
     static changePassword(user, oldPassword, newPassword) {
         return __awaiter(this, void 0, void 0, function* () {
-            let oldPasswords = user.password;
-            let confirmPasswordSuccess = yield bcrypt_1.default.compare(oldPassword, oldPasswords);
+            const oldPasswords = user.password;
+            const confirmPasswordSuccess = yield bcrypt_1.default.compare(oldPassword, oldPasswords);
             console.log(confirmPasswordSuccess);
             if (confirmPasswordSuccess) {
                 user.password = yield bcrypt_1.default.hash(newPassword, 10);
@@ -74,8 +75,8 @@ class AuthServices extends base_services_1.default {
     }
     static sendEmailVerificationRequest(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            let token = this.generateTokenFromString(email);
-            let options = {
+            const token = this.generateTokenFromString(email);
+            const options = {
                 from: process.env.AUTH_EMAIL,
                 to: email,
                 subject: 'Money Lover Email Verification',
@@ -108,7 +109,7 @@ class AuthServices extends base_services_1.default {
     static verifyEmail({ token }) {
         return __awaiter(this, void 0, void 0, function* () {
             jsonwebtoken_1.default.verify(token, `${process.env.JWT_REFRESH_KEY}`, (err, decoded) => __awaiter(this, void 0, void 0, function* () {
-                let user = yield user_services_1.default.getUserByEmail(decoded);
+                const user = yield user_services_1.default.getUserByEmail(decoded);
                 user.active = true;
                 yield userRepo.save(user);
                 return;
@@ -118,11 +119,11 @@ class AuthServices extends base_services_1.default {
     static resetPasswordAndSendPasswordViaEmail({ token }) {
         return __awaiter(this, void 0, void 0, function* () {
             jsonwebtoken_1.default.verify(token, `${process.env.JWT_REFRESH_KEY}`, (err, decoded) => __awaiter(this, void 0, void 0, function* () {
-                let user = yield user_services_1.default.getUserByEmail(decoded);
-                let newPassword = this.getRandomString();
+                const user = yield user_services_1.default.getUserByEmail(decoded);
+                const newPassword = this.getRandomString();
                 user.password = yield bcrypt_1.default.hash(newPassword, 10);
                 userRepo.save(user);
-                let options = {
+                const options = {
                     from: process.env.AUTH_EMAIL,
                     to: decoded,
                     subject: 'Money Lover Password Reset',
@@ -136,6 +137,7 @@ class AuthServices extends base_services_1.default {
             </div>
             `
                 };
+                // tslint:disable-next-line:no-shadowed-variable
                 nodemailer_config_1.default.sendMail(options, (err, info) => {
                     if (err) {
                         console.log(err);
@@ -149,12 +151,12 @@ class AuthServices extends base_services_1.default {
     }
     static sendEmailConfirmResetPassword({ email }) {
         return __awaiter(this, void 0, void 0, function* () {
-            let user = yield user_services_1.default.getUserByEmail(email);
+            const user = yield user_services_1.default.getUserByEmail(email);
             if (!user) {
                 throw new Error('There is no account associated with this email');
             }
-            let token = this.generateTokenFromString(email);
-            let options = {
+            const token = this.generateTokenFromString(email);
+            const options = {
                 from: process.env.AUTH_EMAIL,
                 to: email,
                 subject: 'Money Lover Confirm Reset Password',

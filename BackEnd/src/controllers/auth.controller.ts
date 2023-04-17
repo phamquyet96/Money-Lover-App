@@ -6,16 +6,16 @@ import User from "../models/user.model";
 import AuthServices from "../services/auth.services";
 import BaseServices from "../services/base.services";
 import UserServices from "../services/user.services";
-import TransSubCateServices from "../services/transsubcate.services";
 
-let userRepo = dataSource.getRepository(User);
+
+const userRepo = dataSource.getRepository(User);
 
 class AuthController extends BaseController {
 
     static async register(req: Request, res: Response) {
         try {
-            let user = await AuthServices.register(req.body);
-            await TransSubCateServices.addDefaultSubCategoriesForUser(user.id);
+            const user = await AuthServices.register(req.body);
+            console.log(user)
             await AuthServices.sendEmailVerificationRequest(req.body.email);
             res.status(200).json({ message: 'An email has been sent to your email. Please verify your email to continue' });
         }
@@ -26,11 +26,11 @@ class AuthController extends BaseController {
 
     static async login(req: Request, res: Response) {
         try {
-            let { email, password } = req.body;
-            let [accessToken, refreshToken] = await AuthServices.checkAuthAndGenerateTokens(email, password);
+            const { email, password } = req.body;
+            const [accessToken, refreshToken] = await AuthServices.checkAuthAndGenerateTokens(email, password);
             res.status(200).json({
-                accessToken: accessToken,
-                refreshToken: refreshToken,
+                accessToken,
+                refreshToken,
             });
         }
         catch (err: any) {
@@ -45,7 +45,7 @@ class AuthController extends BaseController {
 
     static async changePassword(req: Request, res: Response) {
         try {
-            let { oldPassword, newPassword } = req.body;
+            const { oldPassword, newPassword } = req.body;
             await AuthServices.changePassword(req.user, oldPassword, newPassword);
             res.status(200).json({ message: 'Reset password successfully!' })
         }
@@ -56,26 +56,27 @@ class AuthController extends BaseController {
 
     static async loginWithGoogle(req, res) {
         let user = await userRepo.findOneBy({ googleId: req.body.sub });
+        console.log(user)
         if (!user) {
             req.body.password = BaseController.getRandomString();
             req.body.image = req.body.picture;
             req.body.googleId = req.body.sub;
             req.body.active = true;
             user = await AuthServices.register(req.body);
-            TransSubCateServices.addDefaultSubCategoriesForUser(user.id);
         }
-        let accessToken = BaseServices.generateAccessToken(user);
-        let refreshToken = BaseServices.generateRefreshToken(user);
+        const accessToken = BaseServices.generateAccessToken(user);
+        const refreshToken = BaseServices.generateRefreshToken(user);
         user.refreshToken = refreshToken
         await userRepo.save(user)
         res.status(200).json({
-            accessToken: accessToken,
-            refreshToken: refreshToken,
+            accessToken,
+            refreshToken,
         });
     }
 
     static async verifyEmail(req: Request, res: Response) {
         try {
+            console.log(req.body)
             await AuthServices.verifyEmail(req.body);
             res.status(200).json({ message: "Email verified" });
         }

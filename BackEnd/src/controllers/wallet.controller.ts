@@ -1,13 +1,12 @@
 import BaseController from "./base.controller";
 import {Request, Response} from "express";
-import TransactionServices from "../services/transaction.services";
 import WalletServices from "../services/wallet.services";
 
 class WalletController extends BaseController {
 
     static getAllWalletsOfUser(req: Request, res: Response) {
-        //@ts-ignore
-        let userId = req.user.id;
+        // @ts-ignore
+        const userId = req.user.id;
         WalletServices.getAllWalletsOfUser(userId)
             .then(wallets => {
                 res.status(200).json(wallets);
@@ -18,7 +17,7 @@ class WalletController extends BaseController {
     }
 
     static getDetailInfoOfWallet(req: Request, res: Response) {
-        let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
         WalletServices.getAllInfoOfWallet(walletId)
             .then(wallet => {
                 res.json(wallet)
@@ -26,8 +25,8 @@ class WalletController extends BaseController {
     }
 
     static getDetailInfoOfAllWallets(req: Request, res: Response) {
-        //@ts-ignore
-        let userId = req.user.id;
+        // @ts-ignore
+        const userId = req.user.id;
         WalletServices.getALlWalletsInfoOfUser(userId)
             .then(wallets => {
                 res.json(wallets)
@@ -35,7 +34,7 @@ class WalletController extends BaseController {
     }
 
     static getWallet(req: Request, res: Response) {
-        let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
         WalletServices.getWalletById(walletId)
             .then(wallet => {
                 res.status(200).json(wallet);
@@ -47,8 +46,7 @@ class WalletController extends BaseController {
 
     static async adjustBalance(req: any, res: Response) {
         try {
-            let { walletId, balance } = req.body;
-            await TransactionServices.addTransactionToAdjustBalance(req.user.id, walletId, balance);
+            const { walletId, balance } = req.body;
             await WalletServices.updateBalance(walletId);
             res.status(200).json({message: "Adjusted balance succesfully!"});
         }
@@ -59,8 +57,8 @@ class WalletController extends BaseController {
 
     static async getTotalBalance(req: Request, res: Response) {
         try {
-            //@ts-ignore
-            let totalBalance = await WalletServices.getTotalBalance(req.user.id);
+            // @ts-ignore
+            const totalBalance = await WalletServices.getTotalBalance(req.user.id);
             return res.status(200).json(totalBalance);
         }
         catch (err) {
@@ -68,7 +66,7 @@ class WalletController extends BaseController {
         }
     }
     static getTotalIncomeExpenseOfWallet(req: Request, res: Response) {
-        let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
         WalletServices.getTotalIncomeExpenseOfWallet(walletId)
             .then(result => {
                 res.status(200).json(result);
@@ -79,9 +77,9 @@ class WalletController extends BaseController {
     }
 
     static getWalletsByIncludedIntotal(req: Request, res: Response) {
-        //@ts-ignore
-        let userId = req.user.id;
-        let isIncluded = req.params.isIncluded == "true" ? true : false;
+        // @ts-ignore
+        const userId = req.user.id;
+        const isIncluded = req.params.isIncluded === "true" ? true : false;
         WalletServices.getWalletsByIncludedInTotal(userId, isIncluded)
             .then(wallets => {
                 res.status(200).json(wallets);
@@ -103,11 +101,11 @@ class WalletController extends BaseController {
     }
 
     static async addWallet(req: Request, res: Response){
-        //@ts-ignore
-        let userId = req.user.id;
-        let name = req.body.name;
-        let initialBalance = req.body.initialBalance;
-        let includeTotal = req.body.includeTotal;
+        // @ts-ignore
+        const userId = req.user.id;
+        const name = req.body.name;
+        const initialBalance = req.body.initialBalance;
+        const includeTotal = req.body.includeTotal;
         try{
             await WalletServices.addWallet(userId,name,initialBalance,includeTotal)
             res.status(200).json({message: "Add wallet successfully"});
@@ -118,7 +116,7 @@ class WalletController extends BaseController {
     }
 
     static async deleteWallet(req: Request, res: Response) {
-            let walletId = Number(req.params.walletId);
+        const walletId = Number(req.params.walletId);
             WalletServices.deleteWallet(walletId)
             .then(() => {
                 res.status(200).json({message: "Delete wallet successfully"});
