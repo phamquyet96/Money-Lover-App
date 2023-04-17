@@ -10,6 +10,7 @@ import {authActions} from "../../feature/auth/authSlice";
 import {GoogleLogin, GoogleOAuthProvider} from "@react-oauth/google";
 import {useNavigate} from "react-router-dom";
 import GoogleButton from "../Button/GoogleButton";
+import Swal from "sweetalert2";
 
 
 
@@ -37,10 +38,19 @@ const Login = () => {
             };
             myAxios.post('/auth/login', values, config)
                 .then((res) => {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'You are login  success!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                     console.log(res)
+                }).then(()=>{
                     navigate('/dashboard')
+            }
 
-                })
+            )
                 .catch(err => {
                     console.log(err.message)
                     setOpen(true)

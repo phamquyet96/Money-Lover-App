@@ -72,7 +72,7 @@ function UpdateProfile(){
                         </Sidebar>
                     </div>
                     <div style={{display:"flex",justifyContent:"center", width: '1300px'}}>
-                        <Card sx={{width:"500px"}}>
+                        <Card style={{width:"500px"}}>
                             <Box>
                                 <TextField>Name</TextField>
                             </Box>

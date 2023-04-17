@@ -7,6 +7,8 @@ import Register from "./components/Login-Register/Register";
 import Forgot from "./components/Forgot_pass/Forgot";
 import Dashboard from "./components/Dashboard/Dashboard";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
+import MyWallet from "./components/MyWallet/MyWallet";
+import WalletDetail from "./components/MyWallet/WalletDetail";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/forgot" element={<Forgot/>}></Route>
         <Route path="/updateProfile" element={<UpdateProfile/>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
+          <Route path="/my-wallet" element={<MyWallet/>}></Route>
+          <Route path="/wallet-detail" element={<WalletDetail/>}></Route>
       </Routes>
   );
 }
