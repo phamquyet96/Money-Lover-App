@@ -14,7 +14,9 @@ function Logout(){
                         <div className=" bg-white">
                             <img src={logout} alt='' className="border border-white-500"/>
                             <p className="ml-6 text-2xl justify-center py-9">Logout Success</p>
-                            <button className="ml-6 mb-3 w-[88px] h-[36px] rounded-none bg-green-500 text-center text-white">SIGN IN</button>
+                            <a href="/auth/login">
+                                <button className="ml-6 mb-3 w-[88px] h-[36px] rounded-none bg-green-500 text-center text-white" >SIGN IN</button>
+                            </a>
                         </div>
                     </div>
                 </div>
