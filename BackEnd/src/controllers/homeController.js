@@ -1,4 +1,4 @@
-// import db from "../models/index"
+import db from "../models/index"
 
 let getHomePage = async (req, res) => {
     try {//tìm tất cả dữ liệu trong bảng user

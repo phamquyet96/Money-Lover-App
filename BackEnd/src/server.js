@@ -3,10 +3,10 @@ import initWebRoutes from "./route/web";
 import express from "express";
 import bodyParser from "body-parser";
 import * as dotenv from 'dotenv'
-
+import connectDB from "./config/connectDB.js";
 dotenv.config()
 let app = express();
-
+// const mysql = require('mysql');
 
 const result = dotenv.config()
 console.log(process.env.PORT)
@@ -18,7 +18,7 @@ viewEngine(app);
 
 initWebRoutes(app);
 
-
+connectDB();
 
 let port = process.env.PORT || 8080;
 
@@ -28,3 +28,4 @@ app.listen(port, () => {
 
 
 //npm start
+//npx sequelize-cli db:migrate 
