@@ -1,2 +1,19 @@
-# base_project_be
- 
+APP_HOST="localhost"
+SV_PORT=8000
+APP_NAME="MONEY_LOVER"
+BASE_URL="http://localhost:3000"
+SESSION_KEY=
+SESSION_MAX_AGE=
+
+DB_CONNECTION="mysql"
+DB_HOST="127.0.0.1"
+DB_PORT=3306
+DB_USER="root"
+DB_PASS="123456"
+DB_NAME="money_lover"
+
+NODE_MAILER_HOST=smtp.gmail.com
+NODE_MAILER_PORT=465
+NODE_MAILER_SERVICE=phamquyet9688@gmail.com
+AUTH_EMAIL=phamquyet9688@gmail.com
+AUTH_PASSWORD=12345678
